@@ -15,13 +15,19 @@
         1. <b>git init</b>
     </p>
     <p>
-        Эта команда используется для клонирования проекта как репозитория git.
+        Для создания нового репозитория используется команда <code style="background-color: rgb(246, 215, 215)">git init</code>. Команду <code style="background-color: rgb(246, 215, 215)">git init</code> выполняют только один раз для первоначальной настройки нового репозитория. Выполнение команды приведет к созданию нового подкаталога .git в вашем рабочем каталоге. Кроме того, будет создана новая главная ветка.
     </p>
     <p>
         2. <b>git clone </b>
     </p>
     <p>
         Эта команда клонирует репозиторий в новую директорию.
+    </p>
+     <p style="color: red">
+        <code style="background-color: rgb(246, 215, 215)"> git clone --depth=1 git://someserver/somerepo dirformynewrepo </code>
+    </p>
+    <p style="color: red">
+        <code style="background-color: rgb(246, 215, 215)">rm -rf !$/.git</code>
     </p>
     <p>
         3. <b> git config</b> 
@@ -47,12 +53,6 @@
     <p>
         Если надо скопировать только файлы:
     </p>
-    <p style="color: red">
-        <code style="background-color: rgb(246, 215, 215)"> git clone --depth=1 git://someserver/somerepo dirformynewrepo </code>
-    </p>
-    <p style="color: red">
-        <code style="background-color: rgb(246, 215, 215)">rm -rf !$/.git</code>
-    </p>
     <p>
         4. <b>git remote add</b>
     </p>
@@ -63,7 +63,7 @@
         Пример: <code style="color:red"><code style="background-color: rgb(246, 215, 215)">git remote add origin https://github.com/MrKrishnaAgarwal/Git-CheatSheet.git</code></code></code>
     </p>
     <p>
-        5. <b>git remote -v</b>
+        5. <b>git remote show</b>
     </p>
     <p>
         Эта команда используется для просмотра подключенных удаленных репозиториев.
@@ -97,6 +97,9 @@
         <code style="color:red"><code style="background-color: rgb(246, 215, 215)">git add</code></code>
     </p>
     <p>
+        Для конкретного файла
+    </p>
+    <p>
         8.<b> git reset</b>
     </p>
     <p>
@@ -104,16 +107,13 @@
         нужного коммита. Например.
     </p>
     <p>
-        отмена неотправленного коммита: <code style="color:red"><code style="background-color: rgb(246, 215, 215)">git reset --hard HEAD^</code></code>
+        <code style="color:red"><code style="background-color: rgb(246, 215, 215)">git reset --hard</code></code> - это самый прямой, ОПАСНЫЙ и часто используемый вариант. При использовании аргумента --hard указатели в истории коммитов обновляются на указанный коммит. Затем происходит сброс раздела проиндексированных файлов и рабочего каталога до указанного коммита. Все предыдущие ожидающие изменения в разделе проиндексированных файлов и рабочем каталоге сбрасываются в соответствии с состоянием дерева коммитов. Это значит, что любая работа, находившаяся в состоянии ожидания в разделе проиндексированных файлов и рабочем каталоге, будет потеряна.
     </p>
     <p>
-        отмена отправленного коммита (возврат к состояние коммита 7880ae2)
+        <code style="color:red"><code style="background-color: rgb(246, 215, 215)">git reset --mixed</code></code> - это режим работы по умолчанию. Указатели ссылок обновляются. Раздел проиндексированных файлов сбрасывается до состояния указанного коммита. Любые изменения, которые были отменены в разделе проиндексированных файлов, перемещаются в рабочий каталог.
     </p>
     <p>
-        <code style="color:red"><code style="background-color: rgb(246, 215, 215)">git reset --hard f7880ae2</code></code>
-    </p>
-    <p>
-        <code style="color:red"><code style="background-color: rgb(246, 215, 215)">git push origin -f</code></code>
+        <code style="color:red"><code style="background-color: rgb(246, 215, 215)">git reset soft</code></code> - выполняется обновление указателей, и на этом операция сброса останавливается. Раздел проиндексированных файлов и рабочий каталог остаются неизменными. Четко продемонстрировать такое поведение довольно сложно.
     </p>
     <p>
         9. <b>git commit</b>
@@ -141,11 +141,7 @@
         10. <b>git push -u origin</b>
     </p>
     <p>
-        Ключ <code style="color:red"><code style="background-color: rgb(246, 215, 215)">-u</code></code> (полный вариант <code style="color:red"><code style="background-color: rgb(246, 215, 215)">--set-upstream</code></code>) создаёт в удалённом репозитории ветку,
-        соответствующую локальной и связывает их.
-    </p>
-    <p>
-        <code style="color:red"><code style="background-color: rgb(246, 215, 215)">git push</code></code>
+        Ключ <code style="color:red"><code style="background-color: rgb(246, 215, 215)">-u</code></code> (полный вариант <code style="color:red"><code style="background-color: rgb(246, 215, 215)">--set-upstream</code></code>) отправляет ветку в удалённый репозиторий.
     </p>
     <p>
         Пример: <code style="color:red"><code style="background-color: rgb(246, 215, 215)">git push -u origin master</code></code>
@@ -159,8 +155,7 @@
         11. <b>git fetch</b>
     </p>
     <p>
-        Эта команда используется для получения самой последней версии вашего локального репозитория. Загружает коммиты,
-        файлы и ссылки из удаленного репозитория в ваш локальный репозиторий.
+        Эта команда используется для скачивания изменений из удаленного или локального репозитория в свой локальный репозиторий. 
     </p>
     <p>
         12. <b>git pull</b>
