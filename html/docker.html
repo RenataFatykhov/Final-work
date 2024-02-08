@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Docker</title>
+    <style>
+        .bg_color {
+            background-color:azure;
+        }
+        .myElement {
+            margin: 10px;
+        }
+    </style>
+</head>
+<body class="bg_color" style="color:midnightblue">
+   <div class="myElement">
+    <div>
+        <h1 align="center">Команды Docker для работы с образами</h1>
+   </div>
+   <p><b>Docker-образ</b> — это шаблон, из которого создаются контейнеры. Образы многократно переиспользуются докером для экономии места. Если родительский (базовый) образ отсутствует в локальном хранилище, он будет скачан с Docker hub. Созданные образы можно хранить локально или загружать на Docker hub.</p>
+   <p>Приведем базовые команды и ключи для работы с образами:</p>
+   <ul>
+        <li><b>Создать образ</b> — docker build -t название образа и путь до проекта. Например, команда docker build -t my_cont_app . соберёт образ под название my_cont_app из текущей директории (“.”).</li>
+        <li><b>Просмотреть список локальных образов</b> — docker images.</li>
+        <li><b>Удалить образ</b> — docker image rm -f название образа.</li>
+        <li><b>Удалить все образы</b> — docker rmi $(docker images -q).</li>
+        <li><b>Поиск образа в удалённом репозитории</b> — docker search имя образа.</li>
+        <li><b>Скачать образ из удалённого репозитория</b> — docker pull имя образа.</li>
+        <li><b>Загрузить образ в личный удаленный репозиторий на Docker hub</b> — docker push название образа (можно начать вводить название и нажать tab).</li>
+    </ul>
+    <p style="text-align: center;"><img alt="" src="https://fs.buttercms.com/resize=width:885/x3KGHadAQV2oPzNJINOp" height="302" width="500"></p>
+    <p>Для загрузки образа на Docker hub — нужно выполнить следующие действия:</p>
+    <ol>
+        <li>Собрать образ командой docker build -t и в качестве имени указать: логин Docker hub / название образа. Например: docker build -t pseudolukian/acc-info.</li>
+        <li>Авторизоваться через консоль: docker login. Команда попросит ввести логин и пароль. После успешной авторизации можно переходить к загрузке образа.</li>
+        <li>Загрузить образ командой docker push имя образа. Например: docker push pseudolukian/acc-info.</li>
+    </ol>
+   </div>
+</body>
+</html>
